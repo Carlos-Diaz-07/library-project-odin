@@ -1,39 +1,68 @@
 // Library
 
 let myLibrary = [
-	{ title: "Los Marcadores", author: "Carlos Diaz", pages: 357, read: "" },
-	{ title: "Los Marcadores 2", author: "Carlos Diaz", pages: 357, read: "" },
-	{ title: "Los Marcadores 3", author: "Carlos Diaz", pages: 357, read: "" },
-	{ title: "Los Marcadores 4", author: "Carlos Diaz", pages: 357, read: "" },
+	{ title: "Los Marcadores", author: "Carlos Diaz", pages: 357, read: true },
+	{ title: "Los Marcadores 2", author: "Carlos Diaz", pages: 357, read: false },
+	{ title: "Los Marcadores 3", author: "Carlos Diaz", pages: 357, read: false },
+	{ title: "Los Marcadores 4", author: "Carlos Diaz", pages: 357, read: false },
 ];
 
-// Display myLibrary
+// Create Cards
 
-const booksDisplay = document.querySelector("#books-display");
-
-function createCard(title, author, pages) {
+function createCard(title, author, pages, read) {
 	let card = document.createElement("div");
 	let cardTitle = document.createElement("h1");
 	let cardAuthor = document.createElement("h2");
 	let cardPages = document.createElement("h3");
+	let removeBtn = document.createElement("button");
+	let changeRead = document.createElement("button");
+
 	card.classList.add("book-card");
 	card.setAttribute("id", `${title}`);
 	card.appendChild(cardTitle);
 	card.appendChild(cardAuthor);
 	card.appendChild(cardPages);
+	card.appendChild(removeBtn);
+	card.appendChild(changeRead);
 	cardTitle.textContent = `${title}`;
 	cardAuthor.textContent = `${author}`;
 	cardPages.textContent = `${pages}`;
-	booksDisplay.appendChild(card);
+
+	// Create remove btn & functionalities within the new card
+
+	removeBtn.textContent = "Delete";
+	removeBtn.classList.add("remove-btn");
+	removeBtn.addEventListener("click", () => {
+		cardToRemove = document.getElementById(`${title}`);
+		cardToRemove.remove();
+		let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
+		myLibrary = newLibrary;
+	});
+
+	// Create a button to change read status at any time within the new card
+
 	
+	// changeRead.classList.add("read-btn");
+	// changeRead.addEventListener("click", () => {
+	// 	if (read === true) {
+	// 		changeRead.textContent = "Read";
+	// 	} else {
+
+	// 	}
+	// });
+
+	booksDisplay.appendChild(card);
 }
+
+// Display myLibrary
+
+const booksDisplay = document.querySelector("#books-display");
 
 function displayBooks() {
 	for (var book in myLibrary) {
 		let title = myLibrary[book].title;
 		let author = myLibrary[book].author;
 		let pages = myLibrary[book].pages;
-		console.log(author);
 		createCard(title, author, pages);
 	}
 }
@@ -52,7 +81,7 @@ function book(title, author, pages, read) {
 	};
 }
 
-// Push new submitted books to myLibrary Array
+// Submit pushes new books to myLibrary Array and create and display a card
 
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", (e) => {
@@ -60,11 +89,21 @@ myForm.addEventListener("submit", (e) => {
 	let title = document.getElementById("book-title").value;
 	let author = document.getElementById("author-name").value;
 	let pages = document.getElementById("number-pages").value;
-	let read = document.getElementById("read").value;
+	let read = document.getElementById("read").checked;
 	let newBook = new book(title, author, pages, read);
 	myLibrary.push(newBook);
 	myForm.reset();
-	createCard(title, author, pages);
+	createCard(title, author, pages, read);
+	document.getElementById("form").style.display = "none";
+	addBtn.style.display = "unset";
 	console.table(myLibrary);
-	console.log("submitted!!!!");
+});
+
+// Add book button
+
+const addBtn = document.querySelector("#add-btn");
+
+addBtn.addEventListener("click", () => {
+	addBtn.style.display = "none";
+	document.getElementById("form").style.display = "unset";
 });
