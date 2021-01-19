@@ -11,18 +11,30 @@ let myLibrary = [
 
 const booksDisplay = document.querySelector("#books-display");
 
-function createCard(name) {
+function createCard(title, author, pages) {
 	let card = document.createElement("div");
+	let cardTitle = document.createElement("h1");
+	let cardAuthor = document.createElement("h2");
+	let cardPages = document.createElement("h3");
 	card.classList.add("book-card");
-	card.setAttribute("id", `${name}`);
+	card.setAttribute("id", `${title}`);
+	card.appendChild(cardTitle);
+	card.appendChild(cardAuthor);
+	card.appendChild(cardPages);
+	cardTitle.textContent = `${title}`;
+	cardAuthor.textContent = `${author}`;
+	cardPages.textContent = `${pages}`;
 	booksDisplay.appendChild(card);
+	
 }
 
 function displayBooks() {
 	for (var book in myLibrary) {
-		let cardName = book.title;
-		console.log(cardName);
-		createCard(cardName);
+		let title = myLibrary[book].title;
+		let author = myLibrary[book].author;
+		let pages = myLibrary[book].pages;
+		console.log(author);
+		createCard(title, author, pages);
 	}
 }
 
@@ -52,7 +64,7 @@ myForm.addEventListener("submit", (e) => {
 	let newBook = new book(title, author, pages, read);
 	myLibrary.push(newBook);
 	myForm.reset();
-	displayBooks();
+	createCard(title, author, pages);
 	console.table(myLibrary);
 	console.log("submitted!!!!");
 });
