@@ -7,6 +7,17 @@ let myLibrary = [
 	{ title: "Los Marcadores 4", author: "Carlos Diaz", pages: 357, read: false },
 ];
 
+//  change read status in myLibrary array
+
+function changeReadStatus(bookTitle, newValue) {
+	for (var book in myLibrary ) {
+		if (myLibrary[book].title === bookTitle) {
+			myLibrary[book].read = newValue;
+			break;
+		}
+	}
+};
+
 // Create Cards
 
 function createCard(title, author, pages, read) {
@@ -15,7 +26,7 @@ function createCard(title, author, pages, read) {
 	let cardAuthor = document.createElement("h2");
 	let cardPages = document.createElement("h3");
 	let removeBtn = document.createElement("button");
-	let changeRead = document.createElement("button");
+	let changeReadBtn = document.createElement("button");
 
 	card.classList.add("book-card");
 	card.setAttribute("id", `${title}`);
@@ -23,10 +34,37 @@ function createCard(title, author, pages, read) {
 	card.appendChild(cardAuthor);
 	card.appendChild(cardPages);
 	card.appendChild(removeBtn);
-	card.appendChild(changeRead);
+	card.appendChild(changeReadBtn);
+
 	cardTitle.textContent = `${title}`;
 	cardAuthor.textContent = `${author}`;
 	cardPages.textContent = `${pages}`;
+	if (read) {
+		card.style.backgroundColor = "green";
+		changeReadBtn.textContent = "Read";
+	} else {
+		card.style.backgroundColor = "red";
+		changeReadBtn.textContent = "Not Read";
+	}
+
+	changeReadBtn.classList.add("read-btn");
+	changeReadBtn.addEventListener("click", () => {
+		if (read) {
+			changeReadStatus(title, false);
+			read = false;
+			card.style.backgroundColor = "red";
+			changeReadBtn.textContent = "Not Read";
+			console.table(myLibrary);
+
+		} else {
+			changeReadStatus(title, true);
+			read = true;
+			card.style.backgroundColor = "green";
+			changeReadBtn.textContent = "Read";
+			console.table(myLibrary);
+
+		}
+	});
 
 	// Create remove btn & functionalities within the new card
 
@@ -38,18 +76,6 @@ function createCard(title, author, pages, read) {
 		let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
 		myLibrary = newLibrary;
 	});
-
-	// Create a button to change read status at any time within the new card
-
-	
-	// changeRead.classList.add("read-btn");
-	// changeRead.addEventListener("click", () => {
-	// 	if (read === true) {
-	// 		changeRead.textContent = "Read";
-	// 	} else {
-
-	// 	}
-	// });
 
 	booksDisplay.appendChild(card);
 }
@@ -63,7 +89,8 @@ function displayBooks() {
 		let title = myLibrary[book].title;
 		let author = myLibrary[book].author;
 		let pages = myLibrary[book].pages;
-		createCard(title, author, pages);
+		let read = myLibrary[book].read;
+		createCard(title, author, pages, read);
 	}
 }
 
