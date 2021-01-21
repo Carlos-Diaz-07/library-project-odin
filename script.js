@@ -1,10 +1,18 @@
 // Library array
 
 let myLibrary = [
-	{ title: "Los Marcadores", author: "Carlos Diaz", pages: 357, read: true },
-	{ title: "Los Marcadores 2", author: "Carlos Diaz", pages: 357, read: false },
-	{ title: "Los Marcadores 3", author: "Carlos Diaz", pages: 357, read: false },
-	{ title: "Los Marcadores 4", author: "Carlos Diaz", pages: 357, read: false },
+	{
+		title: "The Hitchhiker's Guide to the Galaxy",
+		author: "Douglas Adams",
+		pages: 357,
+		read: true,
+	},
+	{
+		title: "The Restaurant at the End of the Universe",
+		author: "Douglas Adams",
+		pages: 250,
+		read: false,
+	},
 ];
 
 //  change read status in myLibrary array
@@ -92,7 +100,7 @@ function createCard(title, author, pages, read) {
 const booksDisplay = document.querySelector("#books-display");
 
 function displayBooks() {
-	if (localStorage.getItem('myLibrary')) {
+	if (localStorage.getItem("myLibrary")) {
 		var savedLibrary = localStorage.getItem("myLibrary");
 		myLibrary = JSON.parse(savedLibrary);
 	}
@@ -149,5 +157,5 @@ addBtn.addEventListener("click", () => {
 // Save in local storage function
 
 function saveInLocal() {
-	localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-};
+	localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
