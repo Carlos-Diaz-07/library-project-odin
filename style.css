@@ -1,4 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-btn {
+    margin-top: 20px;
+    min-height: 2rem;
+    min-width: 80%;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .book-card {
+    display: flex;
+    flex-direction: column;
     min-width: 5rem;
     min-height: 5rem;
+    align-items: center;
 }
+
+.card-btn-container {
+    min-width: 100%;
+}
+
+
+#books-display {
+    margin-top: 20px;
+    display: grid;
+    min-width: 80%;
+    grid-template-columns: 25% 25% 25% 25% ;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+

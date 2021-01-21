@@ -1,4 +1,4 @@
-// Library
+// Library array
 
 let myLibrary = [
 	{ title: "Los Marcadores", author: "Carlos Diaz", pages: 357, read: true },
@@ -10,13 +10,13 @@ let myLibrary = [
 //  change read status in myLibrary array
 
 function changeReadStatus(bookTitle, newValue) {
-	for (var book in myLibrary ) {
+	for (var book in myLibrary) {
 		if (myLibrary[book].title === bookTitle) {
 			myLibrary[book].read = newValue;
 			break;
 		}
 	}
-};
+}
 
 // Create Cards
 
@@ -26,15 +26,20 @@ function createCard(title, author, pages, read) {
 	let cardAuthor = document.createElement("h2");
 	let cardPages = document.createElement("h3");
 	let removeBtn = document.createElement("button");
+	let cardBtnContainer = document.createElement("div");
 	let changeReadBtn = document.createElement("button");
 
 	card.classList.add("book-card");
+	cardBtnContainer.classList.add("card-btn-container");
+	removeBtn.classList.add("in-card-btn");
+	changeReadBtn.classList.add("in-card-btn");
 	card.setAttribute("id", `${title}`);
 	card.appendChild(cardTitle);
 	card.appendChild(cardAuthor);
 	card.appendChild(cardPages);
-	card.appendChild(removeBtn);
-	card.appendChild(changeReadBtn);
+	card.appendChild(cardBtnContainer);
+	cardBtnContainer.appendChild(removeBtn);
+	cardBtnContainer.appendChild(changeReadBtn);
 
 	cardTitle.textContent = `${title}`;
 	cardAuthor.textContent = `${author}`;
@@ -55,14 +60,14 @@ function createCard(title, author, pages, read) {
 			card.style.backgroundColor = "red";
 			changeReadBtn.textContent = "Not Read";
 			console.table(myLibrary);
-
+			saveInLocal();
 		} else {
 			changeReadStatus(title, true);
 			read = true;
 			card.style.backgroundColor = "green";
 			changeReadBtn.textContent = "Read";
 			console.table(myLibrary);
-
+			saveInLocal();
 		}
 	});
 
@@ -75,8 +80,10 @@ function createCard(title, author, pages, read) {
 		cardToRemove.remove();
 		let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
 		myLibrary = newLibrary;
+		saveInLocal();
 	});
 
+	saveInLocal();
 	booksDisplay.appendChild(card);
 }
 
@@ -85,6 +92,10 @@ function createCard(title, author, pages, read) {
 const booksDisplay = document.querySelector("#books-display");
 
 function displayBooks() {
+	if (localStorage.getItem('myLibrary')) {
+		var savedLibrary = localStorage.getItem("myLibrary");
+		myLibrary = JSON.parse(savedLibrary);
+	}
 	for (var book in myLibrary) {
 		let title = myLibrary[book].title;
 		let author = myLibrary[book].author;
@@ -108,7 +119,7 @@ function book(title, author, pages, read) {
 	};
 }
 
-// Submit pushes new books to myLibrary Array and create and display a card
+// Submit pushes new books to myLibrary Array and create & display a new card
 
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", (e) => {
@@ -134,3 +145,9 @@ addBtn.addEventListener("click", () => {
 	addBtn.style.display = "none";
 	document.getElementById("form").style.display = "unset";
 });
+
+// Save in local storage function
+
+function saveInLocal() {
+	localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+};
