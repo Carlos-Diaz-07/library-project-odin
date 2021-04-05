@@ -1,3 +1,5 @@
+"use strict";
+
 // Library array
 
 let myLibrary = [
@@ -84,7 +86,7 @@ function createCard(title, author, pages, read) {
 	removeBtn.textContent = "Delete";
 	removeBtn.classList.add("remove-btn");
 	removeBtn.addEventListener("click", () => {
-		cardToRemove = document.getElementById(`${title}`);
+		let cardToRemove = document.getElementById(`${title}`);
 		cardToRemove.remove();
 		let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
 		myLibrary = newLibrary;
