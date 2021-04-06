@@ -4,7 +4,7 @@ body {
     align-items: center;
     background-image: url("/3.jpeg");
     background-color: darkslategray;
-    background-size: cover;
+    background-size: initial;
 }
 
 #add-btn {
@@ -51,15 +51,19 @@ form > div {
 }
 
 .book-card {
+    flex: auto;
     display: flex;
     flex-direction: column;
     min-width: 15%;
-    
+    max-width: 25%;
     min-height: 250px;
     max-height: 250px;
     justify-content: flex-end;
     padding: 20;
     text-align: center;
+    border-style: groove;
+    border-color: rgb(165, 103, 21);
+    border-width: 5px;
     border-radius: 5%;
     background-image: url(/cover1.jpg);
     background-size: cover;
