@@ -55,10 +55,10 @@ function createCard(title, author, pages, read) {
 	cardAuthor.textContent = `${author}`;
 	cardPages.textContent = `${pages}`;
 	if (read) {
-		card.style.backgroundColor = "green";
+		card.style.backgroundImage = `url('/cover1.jpg')`;
 		changeReadBtn.textContent = "Read";
 	} else {
-		card.style.backgroundColor = "red";
+		card.style.backgroundImage = `url('/cover2.jpg')`;
 		changeReadBtn.textContent = "Not Read";
 	}
 
@@ -67,14 +67,14 @@ function createCard(title, author, pages, read) {
 		if (read) {
 			changeReadStatus(title, false);
 			read = false;
-			card.style.backgroundColor = "red";
+			card.style.backgroundImage = `url('/cover2.jpg')`;
 			changeReadBtn.textContent = "Not Read";
 			console.table(myLibrary);
 			saveInLocal();
 		} else {
 			changeReadStatus(title, true);
 			read = true;
-			card.style.backgroundColor = "green";
+			card.style.backgroundImage = `url('/cover1.jpg')`;
 			changeReadBtn.textContent = "Read";
 			console.table(myLibrary);
 			saveInLocal();
@@ -153,7 +153,7 @@ const addBtn = document.querySelector("#add-btn");
 
 addBtn.addEventListener("click", () => {
 	addBtn.style.display = "none";
-	document.getElementById("form").style.display = "unset";
+	document.getElementById("form").style.display = "inherit";
 });
 
 // Save in local storage function

@@ -2,39 +2,114 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("/3.jpeg");
+    background-color: darkslategray;
+    background-size: cover;
 }
 
 #add-btn {
     margin-top: 20px;
     min-height: 2rem;
     min-width: 80%;
+    padding: 0;
+}
+
+form {
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 80%;
+}
+
+input {
+    text-align: center;
 }
 
 form > div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 10;
+    flex: 2;
+    color:floralwhite
+}
+
+#read {
+    flex: 1;
+}
+
+#submit-btn-container {
+    min-width: 100%;
+    margin: 20px 0;
+    min-height: 2rem;
+}
+
+#submit-btn {
+    min-height: 2rem;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .book-card {
     display: flex;
     flex-direction: column;
-    min-width: 5rem;
-    min-height: 5rem;
-    align-items: center;
+    min-width: 15%;
+    
+    min-height: 250px;
+    max-height: 250px;
+    justify-content: flex-end;
+    padding: 20;
+    text-align: center;
+    border-radius: 5%;
+    background-image: url(/cover1.jpg);
+    background-size: cover;
+}
+
+.book-card h1 {
+    color: floralwhite;
+    max-height: 45%;
+    min-height: 45%;
+    padding: 0;
+    margin: 0;
+    font-size: 150%;
+}
+
+.book-card h2 {
+    color: floralwhite;
+    max-height: 25%;
+    min-height: 25%;
+    padding: 0;
+    margin: 0;
+    font-size: 125%;
+}
+
+.book-card h3 {
+    color: floralwhite;
+    max-height: 20%;
+    min-height: 20%;
+    padding: 0;
+    margin: 0;
 }
 
 .card-btn-container {
+    display: flex;
+    max-height: 10%;
+    min-height: 10%;
     min-width: 100%;
+    justify-content: space-between;
 }
 
+.in-card-btn {
+    min-width: 49%;
+}
 
 #books-display {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-    display: grid;
     min-width: 80%;
-    grid-template-columns: 25% 25% 25% 25% ;
-    column-gap: 10px;
-    row-gap: 10px;
+    flex-wrap: wrap;
+    gap: 0.75vw;
+    
 }
 

@@ -8,24 +8,21 @@
 	<body>
 		<button id="add-btn">Add Book</button>
 		<form id="form" class="form" style="display:none">
-			<div>
-				<label for="title">Title</label>
-				<input type="text" id="book-title" required />
+			<div id="submit-btn-container">
+				<button id="submit-btn" type="submit">Submit</button>
 			</div>
 			<div>
-				<label for="author">Author</label>
-				<input type="text" id="author-name" />
+				<input type="text" id="book-title" required placeholder="Book Title"/>
 			</div>
 			<div>
-				<label for="pages">Number of Pages</label>
-				<input type="number" id="number-pages" />
+				<input type="text" id="author-name" required placeholder="Author Name"/>
 			</div>
 			<div>
+				<input type="number" id="number-pages" required placeholder="Number of Pages"/>
+			</div>
+			<div id="read">
 				<label for="read">Read?</label>
 				<input type="checkbox" id="read" value="read" />
-			</div>
-			<div>
-				<button type="submit">Submit</button>
 			</div>
 		</form>
 		<section id="books-display">
