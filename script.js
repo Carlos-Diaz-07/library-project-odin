@@ -134,10 +134,18 @@ function book(title, author, pages, read) {
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", (e) => {
 	e.preventDefault();
+	console.log(document.querySelector('input[id="read"]').checked);
+	let isItRead = () => {
+		if (document.querySelector('input[id="read"]').checked) {
+			return true;
+		} else {
+			return false;
+		}
+	};
 	let title = document.getElementById("book-title").value;
 	let author = document.getElementById("author-name").value;
 	let pages = document.getElementById("number-pages").value;
-	let read = document.getElementById("read").checked;
+	let read = isItRead();
 	let newBook = new book(title, author, pages, read);
 	myLibrary.push(newBook);
 	myForm.reset();
