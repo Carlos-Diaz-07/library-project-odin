@@ -6,10 +6,10 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<button id="add-btn">Add Book</button>
+		<button id="add-btn">Add New Book</button>
 		<form id="form" class="form" style="display:none">
 			<div id="submit-btn-container">
-				<button id="submit-btn" type="submit">Submit</button>
+				<button id="submit-btn" type="submit">Add New Book</button>
 			</div>
 			<div>
 				<input type="text" id="book-title" required placeholder="Book Title"/>
@@ -25,6 +25,10 @@
 				<input type="checkbox" id="read" name="read" value="true" />
 			</div>
 		</form>
+		<div id="delete-check" style="display:none">
+			<div id="delete-check-text"><h2>Are you sure?</h2></div>
+			<div id="delete-check-btns"><button id="delete-check-yes">Yes</button><button id="delete-check-no">No</button></div>
+		</div>
 		<section id="books-display">
 
         </section>

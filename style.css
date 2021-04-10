@@ -117,3 +117,36 @@ form > div {
     
 }
 
+#delete-check {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    margin: auto auto auto auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-style: groove;
+    border-color: rgb(165, 103, 21);
+    border-width: 5px;
+    border-radius: 5%;
+    background-image: url(/cover2.jpg);
+    background-size: cover;
+    color: floralwhite;
+}
+
+#delete-check-btns {
+    display: flex;
+    width: 20%;
+    max-height: 10%;
+    min-height: 10%;
+    justify-content: space-between;
+}
+
+#delete-check-btns button {
+    width: 45%;
+
+}

@@ -86,11 +86,24 @@ function createCard(title, author, pages, read) {
 	removeBtn.textContent = "Delete";
 	removeBtn.classList.add("remove-btn");
 	removeBtn.addEventListener("click", () => {
-		let cardToRemove = document.getElementById(`${title}`);
-		cardToRemove.remove();
-		let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
-		myLibrary = newLibrary;
-		saveInLocal();
+		let deleteCheck = document.getElementById("delete-check");
+		deleteCheck.style.display = "flex";
+
+		let confirm = document.getElementById("delete-check-yes");
+		let cancel = document.getElementById("delete-check-no");
+
+		confirm.addEventListener("click", () => {
+			let cardToRemove = document.getElementById(`${title}`);
+			cardToRemove.remove();
+			let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
+			myLibrary = newLibrary;
+			saveInLocal();
+			deleteCheck.style.display = 'none';
+		});
+
+		cancel.addEventListener('click', () => {
+			deleteCheck.style.display = 'none';
+		})
 	});
 
 	saveInLocal();
