@@ -133,7 +133,7 @@ form > div {
     border-color: rgb(165, 103, 21);
     border-width: 5px;
     border-radius: 5%;
-    background-image: url(img/cover2.jpg);
+    background-image: url(../img/cover2.jpg);
     background-color: rgb(109, 72, 17) ;
     background-size: cover;
     color: floralwhite;
