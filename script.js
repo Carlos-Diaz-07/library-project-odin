@@ -31,7 +31,6 @@ function changeReadStatus(bookTitle, newValue) {
 // Create Cards
 
 function createCard(title, author, pages, read) {
-	
 	//Create all the elements within a card
 
 	let card = document.createElement("div");
@@ -82,7 +81,7 @@ function createCard(title, author, pages, read) {
 	}
 
 	// read? button event listener and functionality
-	
+
 	changeReadBtn.addEventListener("click", () => {
 		if (read) {
 			changeReadStatus(title, false);
@@ -110,18 +109,21 @@ function createCard(title, author, pages, read) {
 		let confirm = document.getElementById("delete-check-yes");
 		let cancel = document.getElementById("delete-check-no");
 
-		confirm.addEventListener("click", () => {
+		let letsRemove = () => {
 			let cardToRemove = document.getElementById(`${title}`);
 			cardToRemove.remove();
 			let newLibrary = myLibrary.filter((book) => book.title != `${title}`);
 			myLibrary = newLibrary;
 			saveInLocal();
-			deleteCheck.style.display = 'none';
-		});
+			deleteCheck.style.display = "none";
+		};
 
-		cancel.addEventListener('click', () => {
-			deleteCheck.style.display = 'none';
-		})
+		confirm.addEventListener("click", letsRemove);
+
+		cancel.addEventListener("click", () => {
+			deleteCheck.style.display = "none";
+			confirm.removeEventListener("click", letsRemove);
+		});
 	});
 
 	//Save and display new card
@@ -166,7 +168,6 @@ function book(title, author, pages, read) {
 
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", (e) => {
-
 	//Prevent default submit-btn behaviour
 
 	e.preventDefault();
