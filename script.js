@@ -31,6 +31,9 @@ function changeReadStatus(bookTitle, newValue) {
 // Create Cards
 
 function createCard(title, author, pages, read) {
+	
+	//Create all the elements within a card
+
 	let card = document.createElement("div");
 	let cardTitle = document.createElement("h1");
 	let cardAuthor = document.createElement("h2");
@@ -39,11 +42,21 @@ function createCard(title, author, pages, read) {
 	let cardBtnContainer = document.createElement("div");
 	let changeReadBtn = document.createElement("button");
 
+	//Adding Class to elements
+
 	card.classList.add("book-card");
 	cardBtnContainer.classList.add("card-btn-container");
 	removeBtn.classList.add("in-card-btn");
 	changeReadBtn.classList.add("in-card-btn");
+	changeReadBtn.classList.add("read-btn");
+	removeBtn.classList.add("remove-btn");
+
+	// Adding ID to elements
+
 	card.setAttribute("id", `${title}`);
+
+	// Append elements to new card
+
 	card.appendChild(cardTitle);
 	card.appendChild(cardAuthor);
 	card.appendChild(cardPages);
@@ -51,9 +64,15 @@ function createCard(title, author, pages, read) {
 	cardBtnContainer.appendChild(removeBtn);
 	cardBtnContainer.appendChild(changeReadBtn);
 
+	// Adding Content to elements
+
 	cardTitle.textContent = `${title}`;
 	cardAuthor.textContent = `${author}`;
 	cardPages.textContent = `${pages}`;
+	removeBtn.textContent = "Delete";
+
+	// Display book card and btn according to read status
+
 	if (read) {
 		card.style.backgroundImage = `url('/cover1.jpg')`;
 		changeReadBtn.textContent = "Read";
@@ -62,7 +81,8 @@ function createCard(title, author, pages, read) {
 		changeReadBtn.textContent = "Not Read";
 	}
 
-	changeReadBtn.classList.add("read-btn");
+	// read? button event listener and functionality
+	
 	changeReadBtn.addEventListener("click", () => {
 		if (read) {
 			changeReadStatus(title, false);
@@ -81,10 +101,8 @@ function createCard(title, author, pages, read) {
 		}
 	});
 
-	// Create remove btn & functionalities within the new card
+	// Create remove btn event listener and funtionality
 
-	removeBtn.textContent = "Delete";
-	removeBtn.classList.add("remove-btn");
 	removeBtn.addEventListener("click", () => {
 		let deleteCheck = document.getElementById("delete-check");
 		deleteCheck.style.display = "flex";
@@ -105,6 +123,8 @@ function createCard(title, author, pages, read) {
 			deleteCheck.style.display = 'none';
 		})
 	});
+
+	//Save and display new card
 
 	saveInLocal();
 	booksDisplay.appendChild(card);
@@ -142,12 +162,17 @@ function book(title, author, pages, read) {
 	};
 }
 
-// Submit pushes new books to myLibrary Array and create & display a new card
+// Submit form pushes new books to myLibrary Array and create & display a new card
 
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", (e) => {
+
+	//Prevent default submit-btn behaviour
+
 	e.preventDefault();
-	console.log(document.querySelector('input[id="read"]').checked);
+
+	// Is the "read" checkbox checked? => return booleans (True/False)
+
 	let isItRead = () => {
 		if (document.querySelector('input[id="read"]').checked) {
 			return true;
@@ -155,10 +180,16 @@ myForm.addEventListener("submit", (e) => {
 			return false;
 		}
 	};
+
+	// Grab input values
+
 	let title = document.getElementById("book-title").value;
 	let author = document.getElementById("author-name").value;
 	let pages = document.getElementById("number-pages").value;
 	let read = isItRead();
+
+	// Create book object, save it and reset-hide form
+
 	let newBook = new book(title, author, pages, read);
 	myLibrary.push(newBook);
 	myForm.reset();
