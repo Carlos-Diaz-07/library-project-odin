@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("/img/3.jpeg");
+    background-image: url("img/3.jpeg");
     background-color: darkslategray;
     background-size: initial;
 }
@@ -65,7 +65,7 @@ form > div {
     border-color: rgb(165, 103, 21);
     border-width: 5px;
     border-radius: 5%;
-    background-image: url(/img/cover1.jpg);
+    background-image: url(img/cover1.jpg);
     background-size: cover;
 }
 
@@ -133,7 +133,7 @@ form > div {
     border-color: rgb(165, 103, 21);
     border-width: 5px;
     border-radius: 5%;
-    background-image: url(/img/cover2.jpg);
+    background-image: url(img/cover2.jpg);
     background-size: cover;
     color: floralwhite;
 }

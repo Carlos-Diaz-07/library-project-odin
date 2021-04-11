@@ -74,10 +74,10 @@ function createCard(title, author, pages, read) {
 	// Display book card and btn according to read status
 
 	if (read) {
-		card.style.backgroundImage = `url('/img/cover1.jpg')`;
+		card.style.backgroundImage = `url('img/cover1.jpg')`;
 		changeReadBtn.textContent = "Read";
 	} else {
-		card.style.backgroundImage = `url('/img/cover2.jpg')`;
+		card.style.backgroundImage = `url('img/cover2.jpg')`;
 		changeReadBtn.textContent = "Not Read";
 	}
 
@@ -87,14 +87,14 @@ function createCard(title, author, pages, read) {
 		if (read) {
 			changeReadStatus(title, false);
 			read = false;
-			card.style.backgroundImage = `url('/img/cover2.jpg')`;
+			card.style.backgroundImage = `url('img/cover2.jpg')`;
 			changeReadBtn.textContent = "Not Read";
 			console.table(myLibrary);
 			saveInLocal();
 		} else {
 			changeReadStatus(title, true);
 			read = true;
-			card.style.backgroundImage = `url('/img/cover1.jpg')`;
+			card.style.backgroundImage = `url('img/cover1.jpg')`;
 			changeReadBtn.textContent = "Read";
 			console.table(myLibrary);
 			saveInLocal();
