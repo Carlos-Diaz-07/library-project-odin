@@ -54,8 +54,8 @@ form > div {
     flex: auto;
     display: flex;
     flex-direction: column;
-    min-width: 15%;
-    max-width: 25%;
+    min-width: 20%;
+    max-width: 20%;
     min-height: 250px;
     max-height: 250px;
     justify-content: flex-end;
@@ -149,4 +149,53 @@ form > div {
 #delete-check-btns button {
     width: 45%;
 
+}
+
+@media (max-width: 560px) {
+    
+    #books-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        min-width: 90%;
+        
+    }
+    .book-card {
+        max-height: fit-content;
+        min-height: fit-content;
+        max-width: 80%;
+        min-width: 80%;
+    }
+
+    .book-card h2 {
+        margin: 10px 0 10px 0;
+    }
+
+    .book-card h3 {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 680px) {
+    .book-card h1 {
+        font-size: 125%;
+    }
+
+    .book-card h2 {
+        font-size: 115%;
+    }
+}
+
+@media (max-width: 635px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        min-width: 100%;
+    }    
+
+    form div{
+        margin: 2% 0 2% 0 ;
+    }  
 }
